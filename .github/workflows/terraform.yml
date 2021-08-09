@@ -101,3 +101,5 @@ jobs:
       
     - name: Terraform Destroy
       run: terraform destroy -auto-approve
+    - name: Terraform Output 
+      run: cd ../ && vm=$(terraform output) && echo $vm > terraform-output1.ps1
