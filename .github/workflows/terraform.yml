@@ -57,13 +57,13 @@ jobs:
       run: terraform apply -auto-approve
       
     - name: Terraform Output 
-      run: cd ../../../ && terraform output > tf-output.csv
+      run:  terraform output > tf-output.csv
 
     - name: Terraform Output File Artifact Upload
       uses: actions/upload-artifact@v2
       with:
         name: output
-        path: cd ../../../tf-output.csv
+        path: ./tf-output.csv
         
     - name: Terraform Output File Artifact download
       uses: actions/download-artifact@v2
