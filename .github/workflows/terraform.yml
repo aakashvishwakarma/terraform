@@ -65,8 +65,7 @@ jobs:
         name: output
         path: cd ../../../tf-output.csv
         
-        
-      - name: Terraform Output File Artifact download
-        uses: actions/download-artifact@v2
-        with:
-          name: output
+    - name: Terraform Output File Artifact download
+      uses: actions/download-artifact@v2
+      with:
+        name: output
