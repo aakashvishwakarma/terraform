@@ -72,7 +72,7 @@ jobs:
     - name: Convert Terraform Output To CSV
       shell: pwsh
       run: |
-          [string]$str = get-Content terraform-output1.ps1
+          [string]$str = get-Content tf-output.ps1
           $last=$str.length-8
           $str1=$str.Substring(7,$last)
           $str2=$str1.replace("=","")
