@@ -68,36 +68,3 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: output
-        
-    - name: Convert Terraform Output To CSV
-      shell: pwsh
-      run: |
-          [string]$str = get-Content tf-output.ps1
-          $last=$str.length-8
-          $str1=$str.Substring(7,$last)
-          $str2=$str1.replace("=","")
-          $str3=$str2.replace("  "," ")
-          $str4=$str3.trim()
-          $str5=$str4.replace('"','')
-          $str0=$str5.replace("}","")
-          $str6=$str0.trim()
-          $str7=$Str6.split(" ")
-          $lnt = $null
-          $Hash = @{}
-          $lnt= $str7.length/2
-          for ($i=0; $i -lt $lnt; $i++) {
-            $Hash.Add($str7[2*$i],$str7[2*$i+1])
-          }
-          $Hash.GetEnumerator() | Select-Object -Property key, value | Export-Csv -NoTypeInformation -Path .\newvmlistold.csv
-          Get-Content -Path .\newvmlistold.csv | Select-Object -Skip 1 | Add-Content -Path .\newvmlist.csv 
- 
-    - name: Terraform Output -CSV File Artifact Upload
-      uses: actions/upload-artifact@v2
-      with:
-        name: csv_file
-        path: newvmlist.csv
-
-    - name: Terraform Output File Artifact download
-      uses: actions/download-artifact@v2
-      with:
-        name: csv_file
