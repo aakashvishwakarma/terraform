@@ -57,4 +57,4 @@ jobs:
       run: terraform apply -auto-approve
       
     - name: Terraform Output 
-      run: cd ../ && vm=$(terraform output) && echo $vm > terraform-output1.txt
+      run: terraform output > tf-output.csv
