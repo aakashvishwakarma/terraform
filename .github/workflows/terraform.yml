@@ -49,11 +49,6 @@ jobs:
     - name: Terraform Plan
       run: terraform plan
 
-    - run: echo ${{ steps.plan.outputs.stdout }}
-    - run: echo ${{ steps.plan.outputs.stderr }}
-    - run: echo ${{ steps.plan.outputs.exitcode }}
-
-
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
@@ -61,13 +56,13 @@ jobs:
       run: terraform apply -auto-approve
       
     - name: Terraform Output 
-      run:  terraform output > tf-output.csv
+      run:  terraform output > tf-output.ps1
 
     - name: Terraform Output File Artifact Upload
       uses: actions/upload-artifact@v2
       with:
         name: output
-        path: ./tf-output.csv
+        path: ./tf-output.ps1
         
     - name: Terraform Output File Artifact download
       uses: actions/download-artifact@v2
