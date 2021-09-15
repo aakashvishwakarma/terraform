@@ -38,7 +38,8 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          commands: checkov -d .
+#           commands: checkov -d .
+          directory: .
           framework: terraform 
 #     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
 #     - name: Terraform Init
