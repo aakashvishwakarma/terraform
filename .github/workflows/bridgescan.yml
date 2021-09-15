@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'Bridgescan'
 
 on:
   workflow_dispatch:
